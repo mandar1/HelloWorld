@@ -6,4 +6,10 @@
       <class name="com.experitest.auto.AndroidDemoTest"/>
     </classes>
   </test> <!-- Default test -->
+  
+  <test verbose="2" name="new test">
+    <classes>
+      <class name="com.experitest.auto.SNOverlayIcon"/>
+    </classes>
+  </test> <!-- Default test -->
 </suite> 
