@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.junit.After;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 
 import com.experitest.appium.SeeTestAndroidDriver;
 import com.experitest.client.Client;
@@ -25,6 +26,7 @@ public class BaseTest {
 		File reporterDir = new File(System.getProperty("user.dir"),"reports");
 		reporterDir.mkdirs();
 		client.setReporter("xml", reporterDir.getAbsolutePath(), testName);
+		client.launch("chrome:http://www.gsmanrena.com", true, false);
 	}
 
 	protected String getProperty(String property, Properties props) throws FileNotFoundException, IOException{
@@ -65,9 +67,9 @@ public class BaseTest {
 	public void tearDown(){
         // Generates a report of the test case.
         // For more information - https://docs.experitest.com/display/public/SA/Report+Of+Executed+Test
-        client.generateReport(false);
+        client.generateReport();
+        
+        client.getDeviceLog();
         // Releases the client so that other clients can approach the agent in the near future. 
-        client.releaseClient();
 	}
-
 }
